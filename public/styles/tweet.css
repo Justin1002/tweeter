@@ -44,6 +44,8 @@ article > footer {
 .handle {
   display:none;
   color: grey;
+  font-size: 30px;
+  padding: 1em;
 }
 
 article:hover {
