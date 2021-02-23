@@ -1,16 +1,16 @@
 .tweet-container {
   display: flex;
   flex-direction: column;
-  justify-content:center;
-  align-items: center;
+  justify-content: space-between;
   width: 95%;
   padding: 0.5em;
-  border: 3px solid black;
 }
 article {
   display:flex;
   flex-direction: column;
   width: 100%;
+  border: 3px solid black;
+  margin: 20px;
 }
 article > header {
   display: flex;
@@ -33,20 +33,25 @@ article > header > p {
   border-bottom: 3px solid black;
 }
 
-.handle {
-  display:none;
-}
-
 article > footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 0.5em 0.5em;
-  padding-bottom: 0em;
+  padding-bottom: 0.5em;
 }
 
-.tweet-container:hover {
+.handle {
+  display:none;
+  color: grey;
+}
+
+article:hover {
   box-shadow: 10px 10px;
+}
+
+article:hover .handle {
+  display:block;
 }
 
 .social-icons {
