@@ -24,6 +24,10 @@ article > header > p {
   font-size: 30px;
 }
 
+article > header > img {
+  padding-left:0.5em;
+}
+
 .tweet {
   display: flex;
   justify-content: flex-start;
