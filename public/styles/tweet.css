@@ -3,14 +3,14 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  padding: 0.5em;
 }
 article {
   display:flex;
   flex-direction: column;
   width: 100%;
   border: 3px solid black;
-  margin: 20px;
+  margin-bottom: 20px;
+  margin-top: 25px;
 }
 article > header {
   display: flex;
