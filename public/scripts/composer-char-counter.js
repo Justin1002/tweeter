@@ -1,13 +1,18 @@
 $(document).ready(function() {
   $('#tweet-text').on('input',function() {
-    $(this).parent().find('.counter').text(140-$(this).val().length)
 
-    let characters = $(this).parent().find('.counter').text()
-    if (characters < 0) {
-      $('.counter').css("color","red")
-    }
-    else {
-      $('.counter').css("color","inherit")
-    }
-  })
+  const input = $(this);
+  const len = input.val().length;
+  const charactersLeft = 140 - len;
+  const counter = input.parent().find('.counter');
+  counter.text(charactersLeft);
+  
+  if (charactersLeft < 0) {
+    counter.addClass('counter-red');
+  }
+  else {
+    counter.removeClass('counter-red');
+  }
+ })
 });
+
