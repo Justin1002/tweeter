@@ -53,7 +53,7 @@ button.on('click', function(event) {
   const navButton = $('.btn-tweet');
     navButton.on('click', function() {
 
-      let tweetContainer = $(this).closest('body').find('.new-tweet')
+      let tweetContainer = $(this).closest('body').find('#new-tweet')
       let textObject = $(this).closest('body').find('#tweet-text')
 
       if (tweetContainer.css('display') === 'none') {

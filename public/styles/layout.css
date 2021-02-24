@@ -36,13 +36,26 @@ body {
   margin:auto;
  }
 
- .toggle-up {
+ #toggle-up {
    border: none;
-   background-color: red;
-   padding: 30px 15px;
+   background-color: #ff4040;
+   padding: 10px;
    border-radius: 50%;
    cursor: pointer;
    bottom: 30px;
-   right: 15px;
+   right: 8px;
    position: fixed;
+   transition: opacity 0.5s, visibility 0.5s;
+   z-index: 1000;
+   opacity: 0;
+   visibility: hidden;
+ }
+
+ .fa-angle-double-up {
+   color:white
+ }
+
+ #toggle-up.show {
+   opacity: 1;
+   visibility: visible;
  }
