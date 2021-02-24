@@ -11,55 +11,53 @@ $(document).ready(function() {
 
     if (charactersLeft < 0) {
       counter.addClass('counter-red');
-    }
-    else {
+    } else {
       counter.removeClass('counter-red');
     }
-  })
+  });
 
   //-- button function to toggle to the top of the page--//
-  const toggleButton = $('#toggle-up')
+  const toggleButton = $('#toggle-up');
 
-  $(window).scroll (function() {
+  $(window).scroll(function() {
 
-    const navBar = $('.nav-container')
+    const navBar = $('.nav-container');
 
-    if($(window).scrollTop() > 300) {
-      toggleButton.addClass('show')
-      navBar.addClass('hide-nav')
+    if ($(window).scrollTop() > 300) {
+      toggleButton.addClass('show');
+      navBar.addClass('hide-nav');
     } else {
-      toggleButton.removeClass('show')
-      navBar.removeClass('hide-nav')
+      toggleButton.removeClass('show');
+      navBar.removeClass('hide-nav');
     }
-  })
+  });
   
   toggleButton.on('click', function(event) {
-    event.preventDefault()
+    event.preventDefault();
 
-    const tweetContainer = $(this).closest('body').find('#new-tweet')
-    const textObject = $(this).closest('body').find('#tweet-text')
+    const tweetContainer = $(this).closest('body').find('#new-tweet');
+    const textObject = $(this).closest('body').find('#tweet-text');
 
     $('html, body').animate({scrollTop:0},200);
-    tweetContainer.slideDown()
-    textObject.focus()
-  })
+    tweetContainer.slideDown();
+    textObject.focus();
+  });
 
   //--Navigation button functionality--//
   const navButton = $('.btn-tweet');
   navButton.on('click', function() {
 
-    let tweetContainer = $(this).closest('body').find('#new-tweet')
-    let textObject = $(this).closest('body').find('#tweet-text')
+    let tweetContainer = $(this).closest('body').find('#new-tweet');
+    let textObject = $(this).closest('body').find('#tweet-text');
 
     if (tweetContainer.css('display') === 'none') {
-    tweetContainer.slideDown()
-    textObject.focus()
-    }
-    else {
-      tweetContainer.slideUp()
+      tweetContainer.slideDown();
+      textObject.focus();
+    } else {
+      tweetContainer.slideUp();
     }
 
-  })
+  });
 
 });
 
