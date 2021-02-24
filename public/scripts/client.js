@@ -4,7 +4,51 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-$(document).ready( function() {
+ $(document).ready( function() {
+
+const button = $('.tweet-button');
+  
+button.on('click', function(event) {
+
+    event.preventDefault()
+
+    let textObject = $(this).closest('form').find('#tweet-text')
+    let serializedText = textObject.serialize()
+    let text = textObject.val()
+
+    let error = $(this).closest('section').find('.error')
+    let errorIcon = `<i class="fas fa-exclamation-triangle"></i>`
+    let counter = $(this).closest('form').find('.counter')
+    
+    error.html("");
+    error.slideUp();
+
+    setTimeout(function() {
+      if (text === "" || text === null) {
+        error.append(`${errorIcon} Error Message: Tweet cannot be empty ${errorIcon}`)
+        error.slideDown()
+        textObject.focus()
+      }
+  
+      else if (text.length > 140) {
+        error.append(`${errorIcon} Error Message: Tweet exceeds 140 characters ${errorIcon}`)
+        error.slideDown()
+        textObject.focus()
+      }
+      else {
+        $.post("/tweets/",serializedText, function() {
+          error.slideUp()
+          textObject.val('');
+          counter.text(140)
+          loadTweets()
+        })
+      }
+
+    }, 300)
+  
+  })
+
+})
 
 const escape = function(str) {
   let div = document.createElement('div');
@@ -59,47 +103,3 @@ const loadTweets = () => {
 }
 
 loadTweets()
-
-const button = $('.tweet-button');
-  
-button.on('click', function(event) {
-
-    event.preventDefault()
-
-    let textObject = $(this).closest('form').find('#tweet-text')
-    let serializedText = textObject.serialize()
-    let text = textObject.val()
-
-    let error = $(this).closest('section').find('.error')
-    let errorMsg =$(this).closest('section').find('.msg')
-    let counter = $(this).closest('form').find('.counter')
-    
-    errorMsg.html("");
-    error.slideUp();
-
-    setTimeout(function() {
-      if (text === "" || text === null) {
-        errorMsg.append(`Error Message: Tweet cannot be empty`)
-        error.slideDown()
-        textObject.focus()
-      }
-  
-      else if (text.length > 140) {
-        errorMsg.append(` Error Message: Tweet exceeds 140 characters`)
-        error.slideDown()
-        textObject.focus()
-      }
-      else {
-        $.post("/tweets/",serializedText, function() {
-          error.slideUp()
-          textObject.val('');
-          counter.text(140)
-          loadTweets()
-        })
-      }
-
-    }, 300)
-  
-  })
-
-})

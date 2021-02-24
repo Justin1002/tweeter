@@ -60,9 +60,7 @@ background-color: #db6d65;
 color: white;
 font-weight: bold;
 height: 50px;
-}
-
-.msg{
-  display:inline-block
+text-align: center;
+padding: 10px 10px;
 }
 
