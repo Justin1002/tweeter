@@ -33,6 +33,7 @@ article > header > img {
   justify-content: flex-start;
   padding: 1.5em 1.5em;
   border-bottom: 3px solid black;
+  word-break:break-all;
 }
 
 article > footer {
@@ -52,12 +53,19 @@ article > footer {
 
 article:hover {
   box-shadow: 10px 10px;
+  color: grey
 }
 
 article:hover .handle {
   display:block;
 }
 
+article:hover .social-icons {
+  display: block;
+}
+
 .social-icons {
+  display:none;
   color:darkblue;
 }
+

@@ -35,3 +35,14 @@ body {
   max-width: 90%;
   margin:auto;
  }
+
+ .toggle-up {
+   border: none;
+   background-color: red;
+   padding: 30px 15px;
+   border-radius: 50%;
+   cursor: pointer;
+   bottom: 30px;
+   right: 15px;
+   position: fixed;
+ }

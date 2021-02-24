@@ -89,9 +89,9 @@ const createTweetElement = function(object) {
       <p>${object.user.name}</p>
       <span class="handle">${object.user.handle}</span>
       </header>
-    <div class="tweet">
+    <p class="tweet">
     ${escape(object.content.text)}
-    </div>
+    </p>
     <footer class="tweet-footer">
       ${diffDays === 1 ? `<span>${diffDays} day ago</span>` : `<span>${diffDays} days ago</span>`}
       <div>
