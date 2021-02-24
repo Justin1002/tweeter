@@ -49,23 +49,6 @@ button.on('click', function(event) {
   
   })
 
-
-  const navButton = $('.btn-tweet');
-    navButton.on('click', function() {
-
-      let tweetContainer = $(this).closest('body').find('#new-tweet')
-      let textObject = $(this).closest('body').find('#tweet-text')
-
-      if (tweetContainer.css('display') === 'none') {
-      tweetContainer.slideDown()
-      textObject.focus()
-      }
-      else {
-        tweetContainer.slideUp()
-      }
-
-    })
-
 })
 
 const escape = function(str) {
@@ -78,9 +61,7 @@ const createTweetElement = function(object) {
 
   let dateCreated = new Date(object.created_at)
   let today = new Date();
-
-  let timeDiff = Math.abs(today.getTime() - dateCreated.getTime())
-  let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))
+  let timeDiff = Math.ceil(Math.abs(today.getTime() - dateCreated.getTime()))
 
   const $tweet = `
   <article> 
@@ -93,7 +74,7 @@ const createTweetElement = function(object) {
     ${escape(object.content.text)}
     </p>
     <footer class="tweet-footer">
-      ${diffDays === 1 ? `<span>${diffDays} day ago</span>` : `<span>${diffDays} days ago</span>`}
+     ${timeStamp(timeDiff)}
       <div>
         <span class='social-icons'>
           <i class="fa fa-flag" aria-hidden="true"></i>
@@ -110,7 +91,7 @@ const createTweetElement = function(object) {
 const renderTweets = function(arr) {
   for (const tweet of arr) {
     let tweetItem = createTweetElement(tweet)
-    $('#tweet-container').prepend(tweetItem) 
+    $('#tweet-container').prepend(tweetItem)
   }
 }
 
@@ -121,3 +102,39 @@ const loadTweets = () => {
 }
 
 loadTweets()
+
+const timeStamp = function(timeDiff) {
+
+  let dayDiff = Math.round(timeDiff/(1000 * 3600 * 24))
+  let hourDiff = Math.round(timeDiff/(1000*3600))
+  let minuteDiff = Math.round(timeDiff/(60000))
+  let secondDiff = Math.round((timeDiff/(1000)))
+
+  if (timeDiff >= 86400000) {
+    if (dayDiff === 1) {
+      return `<span>${dayDiff} day ago</span>`
+    }
+    return `<span>${dayDiff} days ago</span>`
+  }
+  if (timeDiff >= 3600000) {
+    if (hourDiff === 1) {
+      return `<span>${hourDiff} hour ago</span>`
+    }
+    return `<span>${hourDiff} hours ago</span>`
+  }
+  if (timeDiff >= 60000) {
+    if (minuteDiff === 1) {
+      return `<span>${minuteDiff} minute ago</span>`
+    }
+    return `<span>${minuteDiff} minutes ago</span>`
+  }
+  if (timeDiff >= 1000) {
+    if (secondDiff === 1) {
+      return `<span>${secondDiff} second ago</span>`
+    }
+    return `<span>${secondDiff} seconds ago</span>`
+  }
+  if (timeDiff < 1000) {
+    return `<span>Just moments ago</span>`
+  }
+}

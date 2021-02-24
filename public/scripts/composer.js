@@ -1,20 +1,23 @@
 $(document).ready(function() {
+
+  //-- Dynamic character count on tweet --//
   $('#tweet-text').on('input',function() {
 
-  const input = $(this);
-  const len = input.val().length;
-  const charactersLeft = 140 - len;
-  const counter = input.parent().find('.counter');
-  counter.text(charactersLeft);
-  
-  if (charactersLeft < 0) {
-    counter.addClass('counter-red');
-  }
-  else {
-    counter.removeClass('counter-red');
-  }
- })
+    const input = $(this);
+    const len = input.val().length;
+    const charactersLeft = 140 - len;
+    const counter = input.parent().find('.counter');
+    counter.text(charactersLeft);
 
+    if (charactersLeft < 0) {
+      counter.addClass('counter-red');
+    }
+    else {
+      counter.removeClass('counter-red');
+    }
+  })
+
+  //-- button function to toggle to the top of the page--//
   const toggleButton = $('#toggle-up')
 
   $(window).scroll (function() {
@@ -39,6 +42,23 @@ $(document).ready(function() {
     $('html, body').animate({scrollTop:0},200);
     tweetContainer.slideDown()
     textObject.focus()
+  })
+
+  //--Navigation button functionality--//
+  const navButton = $('.btn-tweet');
+  navButton.on('click', function() {
+
+    let tweetContainer = $(this).closest('body').find('#new-tweet')
+    let textObject = $(this).closest('body').find('#tweet-text')
+
+    if (tweetContainer.css('display') === 'none') {
+    tweetContainer.slideDown()
+    textObject.focus()
+    }
+    else {
+      tweetContainer.slideUp()
+    }
+
   })
 
 });
