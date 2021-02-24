@@ -24,6 +24,7 @@ button.on('click', function(event) {
     error.slideUp();
 
     setTimeout(function() {
+      
       if (text === "" || text === null) {
         error.append(`${errorIcon} Error Message: Tweet cannot be empty ${errorIcon}`)
         error.slideDown()
