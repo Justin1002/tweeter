@@ -6,6 +6,12 @@
  */
 $(document).ready( function() {
 
+const escape = function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str))
+  return div.innerHTML;
+}
+
 const createTweetElement = function(object) {
 
   let dateCreated = new Date(object.created_at)
@@ -22,7 +28,7 @@ const createTweetElement = function(object) {
       <span class="handle">${object.user.handle}</span>
       </header>
     <div class="tweet">
-    ${object.content.text}
+    ${escape(object.content.text)}
     </div>
     <footer class="tweet-footer">
       ${diffDays === 1 ? `<span>${diffDays} day ago</span>` : `<span>${diffDays} days ago</span>`}
@@ -49,7 +55,6 @@ const renderTweets = function(arr) {
 const loadTweets = () => {
   $.getJSON('/tweets/', function(data) {
     renderTweets(data)
-    setTimeout(loadTweets(), 2000);
   })
 }
 
@@ -60,18 +65,33 @@ const $button = $('.tweet-button');
 $button.on('click', function(event) {
 
     event.preventDefault()
-    let textData = $(this).closest('form').find('#tweet-text')
-    let serializedText = textData.serialize()
-    if (textData.val() === "" || textData.val() === null) {
-      alert("Tweet cannot be empty!")
+
+    let textObject = $(this).closest('form').find('#tweet-text')
+    let serializedText = textObject.serialize()
+    let text = textObject.val()
+
+    let error = $(this).closest('section').find('.error')
+    error.html("");
+
+    let counter = $(this).closest('form').find('.counter')
+
+    if (text === "" || text === null) {
+      error.append('Error Message: Tweet cannot be empty')
+      error.slideDown()
+      textObject.focus()
     }
 
-    else if (textData.val().length > 140) {
-      alert("Tweet is more than 140 characters.")
+    else if (text.length > 140) {
+      error.append('Error Message: Tweet exceeds 140 characters')
+      error.slideDown()
+      textObject.focus()
     }
     else {
       $.post("/tweets/",serializedText, function() {
-        textData.val('');
+        error.slideUp()
+        textObject.val('');
+        counter.text(140)
+        loadTweets()
       })
     }
 

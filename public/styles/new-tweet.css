@@ -50,3 +50,15 @@ form {
   justify-content: space-between;
   margin-top: 0.5rem;
 }
+
+.error {
+display:none;
+border-color: black;
+border: 3px solid black;
+margin-top: 0.5em;
+background-color: #db6d65;
+color: white;
+font-weight: bold;
+height: 50px;
+}
+
