@@ -62,3 +62,7 @@ font-weight: bold;
 height: 50px;
 }
 
+.msg{
+  display:inline-block
+}
+

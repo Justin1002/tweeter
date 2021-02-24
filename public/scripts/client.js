@@ -60,9 +60,9 @@ const loadTweets = () => {
 
 loadTweets()
 
-const $button = $('.tweet-button');
+const button = $('.tweet-button');
   
-$button.on('click', function(event) {
+button.on('click', function(event) {
 
     event.preventDefault()
 
@@ -71,30 +71,35 @@ $button.on('click', function(event) {
     let text = textObject.val()
 
     let error = $(this).closest('section').find('.error')
-    error.html("");
-
+    let errorMsg =$(this).closest('section').find('.msg')
     let counter = $(this).closest('form').find('.counter')
+    
+    errorMsg.html("");
+    error.slideUp();
 
-    if (text === "" || text === null) {
-      error.append('Error Message: Tweet cannot be empty')
-      error.slideDown()
-      textObject.focus()
-    }
+    setTimeout(function() {
+      if (text === "" || text === null) {
+        errorMsg.append(`Error Message: Tweet cannot be empty`)
+        error.slideDown()
+        textObject.focus()
+      }
+  
+      else if (text.length > 140) {
+        errorMsg.append(` Error Message: Tweet exceeds 140 characters`)
+        error.slideDown()
+        textObject.focus()
+      }
+      else {
+        $.post("/tweets/",serializedText, function() {
+          error.slideUp()
+          textObject.val('');
+          counter.text(140)
+          loadTweets()
+        })
+      }
 
-    else if (text.length > 140) {
-      error.append('Error Message: Tweet exceeds 140 characters')
-      error.slideDown()
-      textObject.focus()
-    }
-    else {
-      $.post("/tweets/",serializedText, function() {
-        error.slideUp()
-        textObject.val('');
-        counter.text(140)
-        loadTweets()
-      })
-    }
-
+    }, 300)
+  
   })
 
 })
