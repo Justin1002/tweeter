@@ -24,7 +24,7 @@ button.on('click', function(event) {
     error.slideUp();
 
     setTimeout(function() {
-      
+
       if (text === "" || text === null) {
         error.append(`${errorIcon} Error Message: Tweet cannot be empty ${errorIcon}`)
         error.slideDown()
@@ -48,6 +48,23 @@ button.on('click', function(event) {
     }, 300)
   
   })
+
+
+  const navButton = $('.btn-tweet');
+    navButton.on('click', function() {
+
+      let tweetContainer = $(this).closest('body').find('.new-tweet')
+      let textObject = $(this).closest('body').find('#tweet-text')
+
+      if (tweetContainer.css('display') === 'none') {
+      tweetContainer.slideDown()
+      textObject.focus()
+      }
+      else {
+        tweetContainer.slideUp()
+      }
+
+    })
 
 })
 
