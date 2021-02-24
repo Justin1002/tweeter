@@ -14,7 +14,7 @@ nav {
   align-self:flex-end;
 }
 
-.container2 {
+.msg-container {
   flex-direction:column;
   justify-content: center;
   align-content:center;
@@ -29,8 +29,7 @@ nav {
   color: red
 }
 
-.spacer
-{
+.spacer {
     width: 100%;
     height: 120px;
 }

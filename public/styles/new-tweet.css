@@ -13,9 +13,10 @@
   padding: 5px 5px;
 }
 
-.tweet-txt {
+.tweet-label {
   font-size: 36px;
   color: #474656;
+  padding-bottom: 0.5em;
 }
 
 form {
@@ -33,13 +34,19 @@ form {
   outline: none;
   width: 100%;
   height: 65px;
+  padding-top:10px;
 }
 
 .counter {
   font-family: 'Bungee', sans-serif;
 }
-.container3 {
+
+.counter-red {
+  color: red;
+}
+
+.submission {
   display:flex;
   justify-content: space-between;
-  margin-top: 0.5em;
+  margin-top: 0.5rem;
 }
