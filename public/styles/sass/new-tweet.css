@@ -6,8 +6,8 @@
 
 .tweet-button {
   background-color: #4056A1;
-  font-family: 'Bungee', sans-serif;
-  color:#FFFFFF;
+  font-family: "Bungee", sans-serif;
+  color: #FFFFFF;
   padding: 5px 5px;
   cursor: pointer;
 }
@@ -19,7 +19,7 @@
 }
 
 form {
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -28,16 +28,16 @@ form {
   color: black;
   border: transparent;
   border-bottom: 3px solid black;
-  resize:none;
+  resize: none;
   font-size: 25px;
   outline: none;
   width: 100%;
   height: 65px;
-  padding-top:10px;
+  padding-top: 10px;
 }
 
 .counter {
-  font-family: 'Bungee', sans-serif;
+  font-family: "Bungee", sans-serif;
 }
 
 .counter-red {
@@ -45,24 +45,23 @@ form {
 }
 
 .submission {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   margin-top: 0.5rem;
 }
 
 .error {
-display:none;
-border-color: black;
-border: 3px solid black;
-margin-top: 0.5em;
-background-color: #db6d65;
-color: white;
-font-weight: bold;
-height: 50px;
-text-align: center;
-padding: 10px 10px;
+  display: none;
+  border-color: black;
+  border: 3px solid black;
+  margin-top: 0.5em;
+  background-color: #db6d65;
+  color: white;
+  font-weight: bold;
+  height: 50px;
+  text-align: center;
+  padding: 10px 10px;
 }
-
 
 @media only screen and (min-width: 1024px) {
   #new-tweet {
@@ -70,4 +69,6 @@ padding: 10px 10px;
     padding-top: 0em;
     margin-right: 10vw;
   }
-} 
+}
+
+/*# sourceMappingURL=new-tweet.css.map */

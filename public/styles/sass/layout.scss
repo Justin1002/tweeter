@@ -1,0 +1,66 @@
+$text-color: #545149;
+$body-color: #f4f1ec;
+$font-stack: 'Source Sans Pro', sans-serif;
+$toggle-color: #ff4040;
+$arrow-color: white;
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+ html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+ * Global layout stuff
+ */
+
+body {
+  color: $text-color;
+  background-color: $body-color;
+  font-size: 24px;
+  font-family: $font-stack;
+  width: 100%;
+  padding-bottom: 100px;
+}
+
+/*
+ * Additional CSS can be defined below or in other CSS files, as per instructions
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  margin:auto;
+ }
+
+ #toggle-up {
+   border: none;
+   background-color: $toggle-color;
+   padding: 10px;
+   border-radius: 50%;
+   cursor: pointer;
+   bottom: 30px;
+   right: 8px;
+   position: fixed;
+   transition: opacity 0.5s, visibility 0.5s;
+   z-index: 1000;
+   opacity: 0;
+   visibility: hidden;
+ }
+
+ .fa-angle-double-up {
+   color:$arrow-color
+ }
+
+ #toggle-up.show {
+   opacity: 1;
+   visibility: visible;
+ }
