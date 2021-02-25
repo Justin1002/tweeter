@@ -56,7 +56,7 @@ $(document).ready(function() {
 
     const newTweetContainer = $(this).closest('body').find('#new-tweet');
     const textObject = $(this).closest('body').find('#tweet-text');
-    const tweetsContainer = $(this).closest('body').find('#tweet-container')
+    const tweetsContainer = $(this).closest('body').find('#tweet-container');
 
     if (newTweetContainer.css('display') === 'none') {
       newTweetContainer.slideDown();

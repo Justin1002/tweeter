@@ -101,7 +101,7 @@ const createTweetElement = function(object) {
 //renders all tweets in an array
 const renderTweets = function(arr) {
   //empty tweet container prior to filling it with new tweets
-  $('#tweet-container').empty()
+  $('#tweet-container').empty();
   for (const tweet of arr) {
     let tweetItem = createTweetElement(tweet);
     $('#tweet-container').prepend(tweetItem);
@@ -112,8 +112,8 @@ const renderTweets = function(arr) {
 const loadTweets = () => {
   $.getJSON('/tweets/')
     .done(function(data) {
-      renderTweets(data)
-    })
+      renderTweets(data);
+    });
 };
 
 loadTweets();
