@@ -51,11 +51,10 @@ form {
 
 .error {
   display: none;
-  border-color: black;
   border: 3px solid black;
   margin-top: 0.5em;
   background-color: #db6d65;
-  color: white;
+  color: #FFFFFF;
   font-weight: bold;
   height: 50px;
   text-align: center;

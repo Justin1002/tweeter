@@ -43,6 +43,8 @@ $(document).ready(function() {
 
       } else {
         $.post("/tweets/",serializedText, function() {
+          //successful post, slide up any existing error message, remove previous text input and reset counter to 140.
+          //reload tweet
           error.slideUp();
           textObject.val('');
           counter.text(140);
@@ -98,6 +100,8 @@ const createTweetElement = function(object) {
 
 //renders all tweets in an array
 const renderTweets = function(arr) {
+  //empty tweet container prior to filling it with new tweets
+  $('#tweet-container').empty()
   for (const tweet of arr) {
     let tweetItem = createTweetElement(tweet);
     $('#tweet-container').prepend(tweetItem);
@@ -106,13 +110,13 @@ const renderTweets = function(arr) {
 
 //Loads tweet from database file
 const loadTweets = () => {
-  $.getJSON('/tweets/', function(data) {
-    renderTweets(data);
-  });
+  $.getJSON('/tweets/')
+    .done(function(data) {
+      renderTweets(data)
+    })
 };
 
 loadTweets();
-
 
 //Timestamp function to create accurate tweet timestamps
 const timeStamp = function(timeDiff) {

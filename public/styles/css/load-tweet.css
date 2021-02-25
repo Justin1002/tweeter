@@ -37,7 +37,9 @@ article:hover {
   box-shadow: 10px 10px;
   color: grey;
 }
-
+article:hover .handle {
+  display: block;
+}
 article:hover .social-icons {
   display: block;
 }
@@ -50,8 +52,8 @@ article:hover .social-icons {
 }
 
 .handle {
-  display: block;
-  color: grey;
+  display: none;
+  color: #FFFFFF;
   font-size: 30px;
   padding: 1em;
 }
