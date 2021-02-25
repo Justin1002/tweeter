@@ -1,3 +1,9 @@
+@mixin tweet-button {
+  background-color: #4056A1;
+  font-family: 'Bungee', sans-serif;
+  color:#FFFFFF;
+  padding: 5px 5px;
+}
 
 #new-tweet {
   display: none;
@@ -6,10 +12,7 @@
 }
 
 .tweet-button {
-  background-color: #4056A1;
-  font-family: 'Bungee', sans-serif;
-  color:#FFFFFF;
-  padding: 5px 5px;
+@include tweet-button
 }
 
 .tweet-label {
