@@ -4,6 +4,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
 $(document).ready(function() {
 
   const tweetButton = $('.tweet-button');
@@ -15,26 +16,31 @@ $(document).ready(function() {
     const textObject = $(this).closest('form').find('#tweet-text');
     const serializedText = textObject.serialize();
     const textValue = textObject.val();
+
     //declare error variables
     const error = $(this).closest('section').find('.error');
     const errorIcon = `<i class="fas fa-exclamation-triangle"></i>`;
+
     //declare counter variables
     let counter = $(this).closest('form').find('.counter');
     
+    //clear error message and slide error up (only if error was present)
     error.html("");
     error.slideUp();
 
-    //timeout to ensure error message fully clears and slides up before inserting new error message or success post
+    //timeout to ensure error message fully clears and slides up before inserting new error message or successful post
     setTimeout(function() {
 
       if (textValue === "" || textValue === null) {
         error.append(`${errorIcon} Error Message: Tweet cannot be empty ${errorIcon}`);
         error.slideDown();
         textObject.focus();
+
       } else if (textValue.length > 140) {
         error.append(`${errorIcon} Error Message: Tweet exceeds 140 characters ${errorIcon}`);
         error.slideDown();
         textObject.focus();
+
       } else {
         $.post("/tweets/",serializedText, function() {
           error.slideUp();
@@ -57,6 +63,7 @@ const escape = function(str) {
   return div.innerHTML;
 };
 
+//Create tweet element function
 const createTweetElement = function(object) {
 
   let dateCreated = new Date(object.created_at);
@@ -88,6 +95,8 @@ const createTweetElement = function(object) {
   return $tweet;
 };
 
+
+//renders all tweets in an array
 const renderTweets = function(arr) {
   for (const tweet of arr) {
     let tweetItem = createTweetElement(tweet);
@@ -95,6 +104,7 @@ const renderTweets = function(arr) {
   }
 };
 
+//Loads tweet from database file
 const loadTweets = () => {
   $.getJSON('/tweets/', function(data) {
     renderTweets(data);
