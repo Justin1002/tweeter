@@ -4,7 +4,7 @@ Tweeter is a Single Page App (SPA) built with HTML, CSS, JS, jQuery and AJAX on 
 
 
 ## Final Product
-!["screenshot of desktop homepage page"](https://raw.githubusercontent.com/Justin1002/tinyapp/master/docs/tinyApp_url.png)
+!["screenshot of desktop homepage"](https://github.com/Justin1002/tweeter/blob/master/docs/layout.png)
 
 !["gif of the responsive design feature"](https://github.com/Justin1002/tweeter/blob/master/docs/responsive.gif)
 
