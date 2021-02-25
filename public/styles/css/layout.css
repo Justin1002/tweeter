@@ -4,12 +4,10 @@
  * Do not modify these two selectors, please
  */
 html {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 *, *:before, *:after {
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 /*
  * Global layout stuff
@@ -20,8 +18,7 @@ body {
   font-size: 24px;
   font-family: "Source Sans Pro", sans-serif;
   width: 100%;
-  padding-bottom: 100px;
-}
+  padding-bottom: 100px; }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
@@ -32,8 +29,7 @@ body {
   justify-content: center;
   align-items: center;
   max-width: 90%;
-  margin: auto;
-}
+  margin: auto; }
 
 #toggle-up {
   border: none;
@@ -47,16 +43,11 @@ body {
   transition: opacity 0.5s, visibility 0.5s;
   z-index: 1000;
   opacity: 0;
-  visibility: hidden;
-}
+  visibility: hidden; }
 
 .fa-angle-double-up {
-  color: white;
-}
+  color: white; }
 
 #toggle-up.show {
   opacity: 1;
-  visibility: visible;
-}
-
-/*# sourceMappingURL=layout.css.map */
+  visibility: visible; }

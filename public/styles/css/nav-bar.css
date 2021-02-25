@@ -7,14 +7,12 @@ nav {
   display: flex;
   position: fixed;
   justify-content: space-between;
-  padding: 1.5em 1.5em;
-}
+  padding: 1.5em 1.5em; }
 
 #logo {
   font-family: "Bungee", sans-serif;
   font-size: 40px;
-  align-self: flex-end;
-}
+  align-self: flex-end; }
 
 .nav-container {
   flex-direction: column;
@@ -23,8 +21,7 @@ nav {
   font-size: 30px;
   visibility: visible;
   opacity: 1;
-  transition: visibility 0.5s, opacity 0.5s;
-}
+  transition: visibility 0.5s, opacity 0.5s; }
 
 .btn-tweet {
   background-color: transparent;
@@ -32,13 +29,11 @@ nav {
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 5px 5px;
-}
+  padding: 5px 5px; }
 
 .hide-nav {
   visibility: hidden;
-  opacity: 0;
-}
+  opacity: 0; }
 
 .arrow {
   display: flex;
@@ -48,34 +43,24 @@ nav {
   animation-timing-function: ease;
   animation-duration: 1.5s;
   animation-iteration-count: infinite;
-  transform-origin: bottom;
-}
+  transform-origin: bottom; }
 
 @keyframes bounce {
   0% {
-    transform: translateY(0);
-  }
+    transform: translateY(0); }
   50% {
-    transform: translateY(-5px);
-  }
+    transform: translateY(-5px); }
   100% {
-    transform: translateY(0);
-  }
-}
+    transform: translateY(0); } }
+
 .fa-angle-double-down {
-  color: red;
-}
+  color: red; }
 
 .spacer {
   width: 100%;
-  height: 120px;
-}
+  height: 120px; }
 
 @media only screen and (min-width: 1024px) {
   nav {
     background-color: #4056A1;
-    background-image: none;
-  }
-}
-
-/*# sourceMappingURL=nav-bar.css.map */
+    background-image: none; } }

@@ -50,6 +50,7 @@ $(document).ready(function() {
 
 
   //--Navigation button functionality--//
+  
   const navButton = $('.btn-tweet');
   navButton.on('click', function() {
 
