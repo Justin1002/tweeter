@@ -11,7 +11,7 @@ $(document).ready(function() {
   
   tweetButton.on('click', function(event) {
     event.preventDefault();
-    input = $(this);
+    const input = $(this);
     tweetButtonOutput(input);
 
   });
