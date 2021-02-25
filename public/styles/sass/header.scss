@@ -1,5 +1,4 @@
-$name-color: white;
-$header-color: #d68000;
+@import 'color-font';
 
 .main-header {
   height: 400px;
@@ -14,7 +13,7 @@ $header-color: #d68000;
 
 .name {
   font-size: 40px;
-  color: $name-color
+  color: $header-name-color
 }
 
 @media only screen and (min-width: 1024px) {

@@ -1,7 +1,9 @@
+@import 'color-font';
+
 @mixin tweet-button {
-  background-color: #4056A1;
-  font-family: 'Bungee', sans-serif;
-  color:#FFFFFF;
+  background-color: $desktop-background-color;
+  font-family: $logo-font;
+  color: $text-color;
   padding: 5px 5px;
 }
 
@@ -17,7 +19,7 @@
 
 .tweet-label {
   font-size: 36px;
-  color: #474656;
+  color: $tweet-label-color;
   padding-bottom: 0.5em;
 }
 
@@ -40,7 +42,7 @@ form {
 }
 
 .counter {
-  font-family: 'Bungee', sans-serif;
+  font-family: $logo-font;
 }
 
 .counter-red {
@@ -58,8 +60,8 @@ display:none;
 border-color: black;
 border: 3px solid black;
 margin-top: 0.5em;
-background-color: #db6d65;
-color: white;
+background-color: $error-color;
+color: $text-color;
 font-weight: bold;
 height: 50px;
 text-align: center;

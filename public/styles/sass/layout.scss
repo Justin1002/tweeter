@@ -1,8 +1,4 @@
-$text-color: #545149;
-$body-color: #f4f1ec;
-$font-stack: 'Source Sans Pro', sans-serif;
-$toggle-color: #ff4040;
-$arrow-color: white;
+@import 'color-font.scss';
 /*
  * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
  * https://css-tricks.com/international-box-sizing-awareness-day/
@@ -20,10 +16,10 @@ $arrow-color: white;
  */
 
 body {
-  color: $text-color;
+  color: $general-text-color;
   background-color: $body-color;
   font-size: 24px;
-  font-family: $font-stack;
+  font-family: $general-font;
   width: 100%;
   padding-bottom: 100px;
 }
@@ -57,7 +53,7 @@ body {
  }
 
  .fa-angle-double-up {
-   color:$arrow-color
+   color:$nav-arrow-color;
  }
 
  #toggle-up.show {

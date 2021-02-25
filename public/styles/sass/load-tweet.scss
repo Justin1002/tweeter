@@ -1,5 +1,4 @@
-$text-color: grey;
-$icon-color: darkblue;
+@import 'color-font';
 
 #tweet-container {
   display: flex;
@@ -44,7 +43,7 @@ article {
 
   &:hover {
     box-shadow: 10px 10px;
-    color: $text-color
+    color: $shadow-color;
   }
 
   &:hover .handle {
