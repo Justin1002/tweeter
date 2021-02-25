@@ -11,8 +11,8 @@ $(document).ready(function() {
   
   tweetButton.on('click', function(event) {
     event.preventDefault();
-    const input = $(this);
-    tweetButtonOutput(input);
+    const buttonClick = $(this);
+    tweetButtonOutput(buttonClick);
 
   });
 
@@ -31,8 +31,8 @@ $(document).ready(function() {
   //--Navigation button functionality--//
   const navButton = $('.btn-tweet');
   navButton.on('click', function() {
-    const input = $(this);
-    showTweetArea(input);
+    const navButtonClick = $(this);
+    showTweetArea(navButtonClick);
   });
 
 });

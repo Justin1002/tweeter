@@ -2,8 +2,8 @@ $(document).ready(function() {
 
   //-- Dynamic character count on tweet --//
   $('#tweet-text').on('input',function() {
-    const input = $(this);
-    characterCounter(input);
+    const textArea = $(this);
+    characterCounter(textArea);
   });
 
 });
