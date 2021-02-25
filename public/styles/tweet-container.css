@@ -32,8 +32,7 @@ article > header > img {
   display: flex;
   justify-content: flex-start;
   padding: 1.5em 1.5em;
-  border-bottom: 3px solid black;
-  word-break:break-all;
+  padding-top: 0em
 }
 
 article > footer {
@@ -69,3 +68,18 @@ article:hover .social-icons {
   color:darkblue;
 }
 
+@media only screen and (min-width: 1024px) {
+  #tweet-container {
+    margin-right: 10vw;
+  }
+}
+
+.topMargin {
+
+}
+
+@media only screen and (min-width: 1024px) {
+  .topMargin {
+    margin-top: 3.5em;
+  }
+} 

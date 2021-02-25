@@ -43,18 +43,23 @@ $(document).ready(function() {
     textObject.focus();
   });
 
+
   //--Navigation button functionality--//
   const navButton = $('.btn-tweet');
   navButton.on('click', function() {
 
-    let tweetContainer = $(this).closest('body').find('#new-tweet');
-    let textObject = $(this).closest('body').find('#tweet-text');
+    const newTweetContainer = $(this).closest('body').find('#new-tweet');
+    const textObject = $(this).closest('body').find('#tweet-text');
+    const tweetsContainer = $(this).closest('body').find('#tweet-container')
 
-    if (tweetContainer.css('display') === 'none') {
-      tweetContainer.slideDown();
+    if (newTweetContainer.css('display') === 'none') {
+      newTweetContainer.slideDown();
+      tweetsContainer.removeClass('topMargin');
       textObject.focus();
+      
     } else {
-      tweetContainer.slideUp();
+      newTweetContainer.slideUp();
+      tweetsContainer.addClass('topMargin');
     }
 
   });

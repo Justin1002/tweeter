@@ -9,3 +9,16 @@
   background-image: url("https://www.transparenttextures.com/patterns/cardboard.png")
 }
 
+.name {
+  font-size: 40px;
+  color: white;
+}
+
+@media only screen and (min-width: 1024px) {
+  .main-header {
+    width: 25%;
+    height: 450px;
+    float: left;
+    margin: 4em 10em 4em 4em
+  }
+} 

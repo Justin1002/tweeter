@@ -14,7 +14,7 @@ $(document).ready(function() {
     //declare textarea variables
     const textObject = $(this).closest('form').find('#tweet-text');
     const serializedText = textObject.serialize();
-    const text = textObject.val();
+    const textValue = textObject.val();
     //declare error variables
     const error = $(this).closest('section').find('.error');
     const errorIcon = `<i class="fas fa-exclamation-triangle"></i>`;
@@ -24,13 +24,14 @@ $(document).ready(function() {
     error.html("");
     error.slideUp();
 
+    //timeout to ensure error message fully clears and slides up before inserting new error message or success post
     setTimeout(function() {
 
-      if (text === "" || text === null) {
+      if (textValue === "" || textValue === null) {
         error.append(`${errorIcon} Error Message: Tweet cannot be empty ${errorIcon}`);
         error.slideDown();
         textObject.focus();
-      } else if (text.length > 140) {
+      } else if (textValue.length > 140) {
         error.append(`${errorIcon} Error Message: Tweet exceeds 140 characters ${errorIcon}`);
         error.slideDown();
         textObject.focus();
