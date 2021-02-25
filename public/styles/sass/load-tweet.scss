@@ -45,10 +45,6 @@ article {
     box-shadow: 10px 10px;
     color: $shadow-color;
   }
-
-  &:hover .handle {
-    display:block;
-  }
   
   &:hover .social-icons {
     display: block;
@@ -64,8 +60,8 @@ article {
 }
 
 .handle {
-  display:none;
-  color:$text-color;
+  display:block;
+  color:$general-font-color;
   font-size: 30px;
   padding: 1em;
 }

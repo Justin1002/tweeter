@@ -10,50 +10,10 @@ $(document).ready(function() {
   const tweetButton = $('.tweet-button');
   
   tweetButton.on('click', function(event) {
-
     event.preventDefault();
-    //declare textarea variables
-    const textObject = $(this).closest('form').find('#tweet-text');
-    const serializedText = textObject.serialize();
-    const textValue = textObject.val();
+    input = $(this);
+    tweetButtonOutput(input);
 
-    //declare error variables
-    const error = $(this).closest('section').find('.error');
-    const errorIcon = `<i class="fas fa-exclamation-triangle"></i>`;
-
-    //declare counter variables
-    let counter = $(this).closest('form').find('.counter');
-    
-    //clear error message and slide error up (only if error was present)
-    error.html("");
-    error.slideUp();
-
-    //timeout to ensure error message fully clears and slides up before inserting new error message or successful post
-    setTimeout(function() {
-
-      if (textValue === "" || textValue === null) {
-        error.append(`${errorIcon} Error Message: Tweet cannot be empty ${errorIcon}`);
-        error.slideDown();
-        textObject.focus();
-
-      } else if (textValue.length > 140) {
-        error.append(`${errorIcon} Error Message: Tweet exceeds 140 characters ${errorIcon}`);
-        error.slideDown();
-        textObject.focus();
-
-      } else {
-        $.post("/tweets/",serializedText, function() {
-          //successful post, slide up any existing error message, remove previous text input and reset counter to 140.
-          //reload tweet
-          error.slideUp();
-          textObject.val('');
-          counter.text(140);
-          loadTweets();
-        });
-      }
-
-    }, 300);
-  
   });
 
 });
@@ -63,6 +23,43 @@ const escape = function(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
+};
+
+//Timestamp function to create accurate tweet timestamps
+const timeStamp = function(timeDiff) {
+
+  let dayDiff = Math.round(timeDiff / (1000 * 3600 * 24));
+  let hourDiff = Math.round(timeDiff / (1000 * 3600));
+  let minuteDiff = Math.round(timeDiff / (60000));
+  let secondDiff = Math.round((timeDiff / (1000)));
+
+  if (timeDiff >= 86400000) {
+    if (dayDiff === 1) {
+      return `<span>${dayDiff} day ago</span>`;
+    }
+    return `<span>${dayDiff} days ago</span>`;
+  }
+  if (timeDiff >= 3600000) {
+    if (hourDiff === 1) {
+      return `<span>${hourDiff} hour ago</span>`;
+    }
+    return `<span>${hourDiff} hours ago</span>`;
+  }
+  if (timeDiff >= 60000) {
+    if (minuteDiff === 1) {
+      return `<span>${minuteDiff} minute ago</span>`;
+    }
+    return `<span>${minuteDiff} minutes ago</span>`;
+  }
+  if (timeDiff >= 1000) {
+    if (secondDiff === 1) {
+      return `<span>${secondDiff} second ago</span>`;
+    }
+    return `<span>${secondDiff} seconds ago</span>`;
+  }
+  if (timeDiff < 1000) {
+    return `<span>Just moments ago</span>`;
+  }
 };
 
 //Create tweet element function
@@ -110,47 +107,56 @@ const renderTweets = function(arr) {
 
 //Loads tweet from database file
 const loadTweets = () => {
-  $.getJSON('/tweets/')
-    .done(function(data) {
-      renderTweets(data);
-    });
+  $.getJSON('/tweets/', function(data) {
+    renderTweets(data);
+  });
 };
 
+//Inital loading call when page is loaded
 loadTweets();
 
-//Timestamp function to create accurate tweet timestamps
-const timeStamp = function(timeDiff) {
+const tweetButtonOutput = function(input) {
 
-  let dayDiff = Math.round(timeDiff / (1000 * 3600 * 24));
-  let hourDiff = Math.round(timeDiff / (1000 * 3600));
-  let minuteDiff = Math.round(timeDiff / (60000));
-  let secondDiff = Math.round((timeDiff / (1000)));
+  //declare textarea variables
+  const textObject = input.closest('form').find('#tweet-text');
+  const serializedText = textObject.serialize();
+  const textValue = textObject.val();
 
-  if (timeDiff >= 86400000) {
-    if (dayDiff === 1) {
-      return `<span>${dayDiff} day ago</span>`;
+  //declare error variables
+  const error = input.closest('section').find('.error');
+  const errorIcon = `<i class="fas fa-exclamation-triangle"></i>`;
+
+  //declare counter variables
+  let counter = input.closest('form').find('.counter');
+  
+  //clear error message and slide error up (only if error was present)
+  error.html("");
+  error.slideUp();
+
+  //timeout to ensure error message fully clears and slides up before inserting new error message or successful post
+  setTimeout(function() {
+
+    if (textValue === "" || textValue === null) {
+      error.append(`${errorIcon} Error Message: Tweet cannot be empty ${errorIcon}`);
+      error.slideDown();
+      textObject.focus();
+
+    } else if (textValue.length > 140) {
+      error.append(`${errorIcon} Error Message: Tweet exceeds 140 characters ${errorIcon}`);
+      error.slideDown();
+      textObject.focus();
+
+    } else {
+      $.post("/tweets/",serializedText, function() {
+        //successful post, slide up any existing error message, remove previous text input and reset counter to 140.
+        //reload tweet
+        error.slideUp();
+        textObject.val('');
+        counter.text(140);
+        loadTweets();
+      });
     }
-    return `<span>${dayDiff} days ago</span>`;
-  }
-  if (timeDiff >= 3600000) {
-    if (hourDiff === 1) {
-      return `<span>${hourDiff} hour ago</span>`;
-    }
-    return `<span>${hourDiff} hours ago</span>`;
-  }
-  if (timeDiff >= 60000) {
-    if (minuteDiff === 1) {
-      return `<span>${minuteDiff} minute ago</span>`;
-    }
-    return `<span>${minuteDiff} minutes ago</span>`;
-  }
-  if (timeDiff >= 1000) {
-    if (secondDiff === 1) {
-      return `<span>${secondDiff} second ago</span>`;
-    }
-    return `<span>${secondDiff} seconds ago</span>`;
-  }
-  if (timeDiff < 1000) {
-    return `<span>Just moments ago</span>`;
-  }
+
+  }, 300);
+
 };
