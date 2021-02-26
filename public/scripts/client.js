@@ -25,7 +25,8 @@ $(document).ready(function() {
   const toggleButton = $('#toggle-up');
   toggleButton.on('click', function(event) {
     event.preventDefault();
-    scrollUp();
+    const toggle = $(this)
+    scrollUp(toggle);
   });
 
   //--Navigation button functionality--//
@@ -197,10 +198,10 @@ const scrollButtonVisibility = function() {
 
 };
 
-const scrollUp = function() {
-
-  const newTweetContainer = $(this).closest('body').find('#new-tweet');
-  const textObject = $(this).closest('body').find('#tweet-text');
+const scrollUp = function(input) {
+  
+  const newTweetContainer = input.closest('body').find('#new-tweet');
+  const textObject = input.closest('body').find('#tweet-text');
   
   //animate scroll up, and focus on new tweet container when scrolled
   $('html, body').animate({scrollTop:0},200);
