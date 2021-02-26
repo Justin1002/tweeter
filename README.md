@@ -14,7 +14,7 @@ Tweeter is a Single Page App (SPA) built with HTML, CSS, JS, jQuery and AJAX on 
 
 1. Fork this repository, then clone your fork of this repository.
 2. Install dependencies using the `npm install` command.
-3. Write css files using `npm run scss` command.
+3. Compile css files using `npm run scss` command.
 4. Start the web server using the `npm start` command. The app will be served at <http://localhost:8090/>.
 5. Go to <http://localhost:8090/> in your browser.
 
