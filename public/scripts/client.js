@@ -87,7 +87,7 @@ const createTweetElement = function(object) {
 
   let dateCreated = new Date(object.created_at);
   let today = new Date();
-  let timeDiff = Math.ceil(Math.abs(today.getTime() - dateCreated.getTime()));
+  let timeDiff = Math.ceil(today.getTime() - dateCreated.getTime());
 
   const $tweet = `
   <article> 
